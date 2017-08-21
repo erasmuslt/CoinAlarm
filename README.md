@@ -1,5 +1,6 @@
 # CoinAlarm
 
-Language : Python
+```
 Author : Jihoon KIM
-Purpose : Practice
+Data   : 2017.08.21
+```
