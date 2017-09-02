@@ -11,19 +11,10 @@ from bs4 import BeautifulSoup as bs
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 import re
-LOGIN_INFO = {
-    'user_id': 'aa',
-    'password': 'aa'
-}
+from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.triggers.interval import IntervalTrigger
+import os
 
-    
-    #html = first_page.text
-    #soup = bs(html, 'html.parser')
-    #csrf = soup.find('input', {'name':'_csrf'})
-    #print(csrf['value'])
-    
-    #LOGIN_INFO = {**LOGIN_INFO, **{'_csrf' : csrf['value']}}
-    #print (LOGIN_INFO)
 
 
 def Load_Price():
@@ -54,6 +45,19 @@ def Load_TotalMarketCap():
     except HTTPError as e:
         print (e)
 
-Load_Price()
-#Load_TotalMarketCap()
+
+if __name__ == '__main__':
+    scheduler = BlockingScheduler()
+    # Official Documents dosen't work with no reason (tried re-install packages after upgrade setuptools)
+    trigger = IntervalTrigger(seconds=10) 
+    scheduler.add_job(Load_Price,trigger)
+    print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
+
+    try:
+        scheduler.start()
+    except (KeyboardInterrupt, SystemExit):
+        pass
+    
+    #Load_Price()
+    #Load_TotalMarketCap()
         
