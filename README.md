@@ -14,8 +14,8 @@ Load the data with interval of 5 seconds using apscheduler. (https://github.com/
 
 ## 2. Telegram Bot
 
-Made simple telegram bot to communicate using Telepot library (http://telepot.readthedocs.io/en/latest/) 
-you can search @CoinStatus_bot in Telegram ( it response when I operating program so, usually it is not enabled)
+Made simple telegram bot to communicate using Telepot library. (http://telepot.readthedocs.io/en/latest/)
+so, you can search @CoinStatus_bot in Telegram. ( it response when I operating program so, usually it is not enabled)
 
 
 
